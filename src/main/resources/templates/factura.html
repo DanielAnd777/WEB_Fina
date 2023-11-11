@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Factura</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="facturacion.css">
+                    <style>
+                        @media print {
+                            body * {
+                                visibility: hidden;
+                            }
+
+                            #Imprimir, #Imprimir * {
+                                visibility: visible;
+                            }
+
+                            #Imprimir {
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                            }
+
+                            #tablaCalculos th:first-child,
+                            #tablaCalculos td:first-child {
+                                display: none;
+                            }
+                        }
+                    </style>
+
+
+                    </head>
+                    <body>
+                        <header>
+                            <h1 id="titulo">Factura</h1>
+                        </header>
+                        <br/>
+                        <button  onclick="window.location.href = '/menu'" class="menu">Menu</button>
+
+                        <button onclick="window.print()" class="print-btn">Imprimir</button>
+
+
+                        <section id="im">
+
+                            <!-- Tabla de productos -->
+                            <div id="tablaProductos">
+                                <div th:if="${productos != null and !productos.empty}">
+                                    <br />
+                                    <table>
+                                        <tr>
+                                            <th>Acciones</th>
+                                            <th>Nombre Producto</th>
+                                            <th>Precio Unitario</th>
+                                            <th>Unidades Disponibles</th>
+                                        </tr>
+                                        <tr th:each="producto : ${productos}">
+                                            <td><button onclick="agregarProducto(this)">+</button></td>
+                                            <td th:text="${producto.Nombre_Producto}"></td>
+                                            <td th:text="${producto.Precio_Unitario}"></td>
+                                            <td th:text="${producto.Cantidad_Producto}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div th:if="${productos == null or productos.empty}">
+                                    La lista no tiene información
+                                </div>
+                                <br />
+                            </div>
+
+                            <!-- Tabla de cálculos -->
+                            <section id="Imprimir">
+                                <div id="encabezado">
+                                    <div id="centrarH2">
+                                        <img src="cubo.jpg" alt="Descripción de la imagen">
+                                            <h2>Puzzle Haven</h2>
+                                            <h2>Factura</h2>
+                                    </div>
+
+
+                                    <form>
+                                        <label>Facturar a:</label>
+                                        <br>
+                                            <label for="nombreCliente">Nombre cliente:</label>
+                                            <input type="text" id="nombreCliente" name="nombreCliente">
+
+                                                <label for="nit">NIT:</label>
+                                                <input type="text" id="nit" name="nit">
+                                                    <br>
+                                                        <br>
+                                                            <label for="direccion">Dirección:</label>
+                                                            <input type="text" id="direccion" name="direccion">
+
+                                                                <label for="tel">Tel:</label>
+                                                                <input type="text" id="tel" name="tel">
+                                                                    </form>
+                                                                    <div id="tablaCalculos">
+                                                                        <br />
+                                                                        <table>
+                                                                            <tr>
+                                                                                <th>Acciones</th>
+                                                                                <th>Nombre Producto</th>
+                                                                                <th>Precio Unitario</th>
+                                                                                <th>Cantidad</th>
+                                                                                <th>Subtotal</th>
+                                                                            </tr>
+                                                                            <!-- Filas de detalles se agregarán dinámicamente aquí -->
+                                                                        </table>
+
+                                                                        <br />
+
+                                                                        <!-- Total final se mostrará aquí -->
+                                                                        <div id="totalFinal">Total Final: 0.00</div>
+                                                                    </div>
+                                                                    </section>
+                                                                    </section>
+
+                                                                    <!-- Script JavaScript para la funcionalidad de la factura -->
+                                                                    <script>
+
+                                                                        document.addEventListener('DOMContentLoaded', function () {
+                                                                            var tablaProductos = document.getElementById('tablaProductos');
+                                                                            var tablaCalculos = document.getElementById('tablaCalculos');
+
+                                                                            tablaProductos.addEventListener('click', function (event) {
+                                                                                var target = event.target;
+                                                                                if (target.tagName === 'BUTTON') {
+                                                                                    var filaProductos = target.parentElement.parentElement;
+                                                                                    var nombreProducto = filaProductos.querySelector('td:nth-child(2)').textContent;
+                                                                                    var precioUnitario = parseFloat(filaProductos.querySelector('td:nth-child(3)').textContent);
+
+                                                                                    var filaCalculos = document.createElement('tr');
+                                                                                    filaCalculos.innerHTML = `
+                                                                                        <td><button onclick="eliminarFila(this)">-</button></td>
+                                                                                        <td>${nombreProducto}</td>
+                                                                                        <td>${precioUnitario}</td>
+                                                                                        <td><input type="number" class="cantidad" value="0" min="0"></td>
+                                                                                        <td class="subtotal">0.00</td>
+                                                                                    `;
+
+                                                                                    tablaCalculos.querySelector('table').appendChild(filaCalculos);
+
+                                                                                    var inputCantidad = filaCalculos.querySelector('.cantidad');
+                                                                                    inputCantidad.addEventListener('input', function () {
+                                                                                        var cantidad = parseInt(inputCantidad.value, 10);
+                                                                                        var subtotal = cantidad * precioUnitario;
+                                                                                        filaCalculos.querySelector('.subtotal').textContent = subtotal.toFixed(2);
+
+                                                                                        actualizarTotal();
+                                                                                    });
+
+                                                                                    actualizarTotal();
+                                                                                }
+                                                                            });
+
+                                                                            window.eliminarFila = function (button) {
+                                                                                var filaCalculos = button.parentElement.parentElement;
+                                                                                filaCalculos.remove();
+
+                                                                                actualizarTotal();
+                                                                            };
+
+                                                                            function actualizarTotal() {
+                                                                                var filasCalculos = tablaCalculos.querySelectorAll('tr:not(:first-child)');
+                                                                                var totalFinal = 0;
+
+                                                                                filasCalculos.forEach(function (fila) {
+                                                                                    var subtotal = parseFloat(fila.querySelector('.subtotal').textContent);
+                                                                                    totalFinal += subtotal;
+                                                                                });
+
+                                                                                var totalFinalElement = document.getElementById('totalFinal');
+                                                                                totalFinalElement.textContent = 'Total Final: ' + totalFinal.toFixed(2);
+                                                                            }
+                                                                        });
+
+
+                                                                    </script>
+                                                                    </body>
+                                                                    </html>

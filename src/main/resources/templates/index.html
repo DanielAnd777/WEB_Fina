@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Puzzle Haven</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+    <header>
+        <h1 id="titulo">Inventario</h1>
+    </header>
+    <br/>
+ <button  onclick="window.location.href='/menu'" class="menu">Menu</button>
+ 
+     <input type="text" id="filtro" placeholder="Buscar...">
+    <button onclick="window.location.href='/anexar'" class="right">Agregar Producto</button>
+   
+
+    <button onclick="window.location.href='/exportarPDF'" class="btn btn-primary">Exportar a PDF</button>
+
+    <br />
+
+    <div id="tablaProductos">
+        <div th:if="${productos != null and !productos.empty}">
+            <br />
+            <table>
+                <tr>
+                    <th>Codigo Producto </th>
+                    <th>Nombre Producto </th>
+                    <th>Precio Unitario </th>
+                    <th>Cantidad Producto </th>
+                    <th>Edad de Uso </th>
+                    <th>Modificar </th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr th:each="producto : ${productos}">
+                    <td th:text="${producto.Codigo_Producto}"></td>
+                    <td th:text="${producto.Nombre_Producto}"></td>
+                    <td th:text="${producto.Precio_Unitario}"></td>
+                    <td th:text="${producto.Cantidad_Producto}"></td>
+                    <td th:text="${producto.Edad_de_Uso}"></td>
+                    <td> <a th:href="@{/modificar/} + ${producto.Codigo_Producto}" th:text="Modificar" /></td>
+                    <td> <a th:href="@{/borrar/} + ${producto.Codigo_Producto}" th:text="Eliminar" /></td>
+
+
+                </tr>
+            </table>
+        </div>
+        <div th:if="${productos == null or productos.empty}">
+            La lista no tiene informacion
+        </div>
+
+        <br />
+        <br />
+        <br />
+
+
+        <footer>
+            <section>
+                <a href="#titulo">Ir arriba</a>
+                <a href="mailto:ambriangel@gmail.com">Contactame aqui</a>
+            </section>
+            <p>Copyright 2023</p>
+
+        </footer>
+
+        <script>
+            const filtroInput = document.getElementById("filtro");
+            const tableRows = document.querySelectorAll("tbody tr");
+
+            filtroInput.addEventListener("input", function () {
+                const filtroValor = filtroInput.value.toLowerCase();
+
+                tableRows.forEach(function (row) {
+                    const textoFila = row.textContent.toLowerCase();
+                    if (textoFila.includes(filtroValor)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+
+
+        </script>
+
+</body>
+
+</html>

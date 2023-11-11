@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+    <title>Menú</title>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+	<header>
+            <h1 id="titulo">Puzzle Haven</h1>
+            <h4>Menú</h4>
+             
+            
+        </header>
+   
+    
+<section class="container">
+    <a th:href="@{/index}">
+        <img src="Inventario.png" alt="Inventario">
+    </a>
+    <a th:href="@{/factura}">
+        <img src="Facturacion.png" alt="Facturas">
+    </a>
+    
+    <a href="manualtecnico.pdf" target="_blank">
+  <img src="manual tecnico.png" alt="Abrir PDF" >
+</a>
+    
+        <a href="manualusario.pdf" target="_blank">
+  <img src="Manual de usuario.png" alt="Abrir PDF" >
+</a>
+
+
+</section>
+
+    
+            <footer>
+            <section>
+                <a href="#titulo">Ir arriba</a>
+                <a href="mailto:ambriangel@gmail.com">Contactame aqui</a>
+            </section>
+            <p>Copyright 2023</p>
+        </footer>
+</body>
+</html>
+

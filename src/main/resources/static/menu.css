@@ -1,0 +1,84 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 10/11/2023, 14:37:57
+    Author     : Asus
+*/
+
+html{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+body {
+    margin: 0;
+    background-color: #efefef;
+
+}
+
+
+
+/* Fondo negro y texto blanco */
+
+
+header {
+    background-color:  #364552;
+    color: white;
+    padding: 3rem 2rem;
+
+
+}
+header h1 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+
+header h5 {
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Estilo de la sección del menú */
+.container {
+    display: flex;
+    justify-content: space-around; /* Distribuir elementos equitativamente */
+    padding: 20px;
+}
+
+/* Estilo de los enlaces en la sección del menú */
+.container a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Estilo de las imágenes en la sección del menú */
+.container img {
+    width: 300px; /* Ajusta el tamaño según tus necesidades */
+    height: auto;
+}
+
+footer {
+    background-color: #222;
+    padding: 3rem;
+    color: #fff;
+}
+
+footer section{
+    float: right;
+}
+footer p{
+    margin: 0;
+
+}
+footer a {
+    transition: color 0.3s ease;
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: cornflowerblue;
+}

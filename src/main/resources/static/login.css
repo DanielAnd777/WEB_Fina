@@ -1,0 +1,75 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 10/11/2023, 11:35:26
+    Author     : Asus
+*/
+
+html{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('login.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    width: 300px; /* Puedes ajustar este valor según tus necesidades */
+    margin: auto;
+    margin-top: 100px; /* Ajusta la distancia desde la parte superior según tus necesidades */
+    background: transparent; /* Utiliza rgba para la transparencia del fondo */
+    padding: 20px;
+    border-radius: 10px; /* Agrega esquinas redondeadas si lo deseas */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Agrega sombra para resaltar la sección */
+}
+
+.container h1 {
+    text-align: center;
+    color: white;
+}
+
+.pass{
+    color: white;
+}
+
+.user{
+    color: white;
+}
+.container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container label {
+    margin-bottom: 10px;
+}
+
+.container input {
+    background: transparent;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: white;
+    
+    
+}
+
+.container input::placeholder {
+    color: white;
+}
+
+.container input[type="submit"] {
+    background-color: #CD143C;
+    color: white;
+    cursor: pointer;
+}
+
+.container input[type="submit"]:hover {
+    background-color: #8a1622;
+}

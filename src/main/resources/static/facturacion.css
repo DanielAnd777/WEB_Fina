@@ -1,0 +1,151 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 10/11/2023, 17:29:21
+    Author     : Asus
+*/
+
+body {
+    margin: 0;
+    background-color: #efefef;
+
+}
+
+header {
+    background-color: #364552;
+    color: white;
+    padding: 3rem 2rem;
+
+
+}
+
+header h1 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+
+button.menu {
+    background-color: #34495e; /* Azul oscuro */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Animación cuando el cursor pasa por encima del botón */
+button.menu:hover {
+    background-color: #2c3e50; /* Cambia a un tono más oscuro de azul */
+    transform: scale(1.05); /* Hace que el botón se agrande ligeramente */
+}
+
+/* Estilos para el botón de imprimir */
+
+button.print-btn {
+    background-color: #3498db; /* Color celeste */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    float: right;
+    top: 10px;
+    right: 10px;
+}
+
+/* Animación cuando el cursor pasa por encima del botón */
+button.print-btn:hover {
+    background-color: #2980b9; /* Cambia a un tono más oscuro de celeste */
+    transform: scale(1.05); /* Hace que el botón se agrande ligeramente */
+}
+
+/* Estilos para la sección Imprimir y las tablas */
+#im {
+    display: flex;
+    justify-content: space-between; /* Distribuir el espacio entre las tablas */
+}
+
+.container {
+    width: 30%; /* Ancho de cada contenedor (ajustable según tus necesidades) */
+}
+
+/* Otros estilos para las tablas, encabezado, etc. */
+
+
+/* Estilos para la primera tabla */
+#tablaProductos table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tablaProductos th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+    color: white;
+}
+
+#tablaProductos th {
+    background-color: black;
+    color: white; /* Solo el encabezado debe ser blanco */
+}
+
+th, td{
+    border: solid 1px black;
+    padding: 5px;
+
+}
+
+
+#tablaProductos button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Estilos para la segunda tabla */
+#Imprimir table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#Imprimir th, #Imprimir td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+#Imprimir button {
+    background-color: red; /* Corregido a rojo */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#centrarH2 {
+    text-align: center;
+}
+
+/* Estilos para los elementos dentro del contenedor #centrarH2 */
+#centrarH2 {
+    text-align: center;
+}
+
+#centrarH2 img {
+    max-width: 50px; /* Ajusta el ancho máximo de la imagen según tus necesidades */
+    margin-bottom: 5px; /* Espacio entre la imagen y los h2 */
+}
+
+#centrarH2 h2 {
+    margin: 0;
+    /* Puedes agregar estilos adicionales si es necesario */
+}

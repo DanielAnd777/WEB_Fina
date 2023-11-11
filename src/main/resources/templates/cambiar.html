@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org"
+      xmlns = "http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Producto</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="cambiar.css">
+
+    </head>
+    <body>
+        <header>
+            <h1 id="titulo">Producto</h1>
+        </header>
+        <br/>
+         <button  onclick="window.location.href='/menu'" class="menu">Menu</button>
+        <br/>
+        <section class="cointener">
+            <form th:action="@{/salvar}" method="post" th:object="${producto}">
+
+                <input type="hidden" name="Codigo_Producto" th:field="*{Codigo_Producto}">
+
+                    <br/>
+                    <label for="Nombre_Producto">Nombre Producto:</label><br/>
+                    <input type="text" name="Nombre_Producto" th:field="*{Nombre_Producto}"/>
+                    <span th:if="${#fields.hasErrors('Nombre_Producto')}" th:errores="*{Nombre_Producto}">Error</span>
+                    <br/>
+                    <label for="Precio_Unitario">Precio Unitario:</label><br/>
+                    <input type="text" name="Precio_Unitario" th:field="*{Precio_Unitario}"/>
+                    <span th:if="${#fields.hasErrors('Precio_Unitario')}" th:errors="*{Precio_Unitario}">Error</span>
+                    <br/>
+                    <label for="Cantidad_Producto">Cantidad Producto:</label><br/>
+                    <input type="number" name="Cantidad_Producto" th:field="*{Cantidad_Producto}"/>
+                    <span th:if="${#fields.hasErrors('Cantidad_Producto')}" th:errors="*{Cantidad_Producto}">Error</span>
+                    <br/>
+                    <label for="Edad_de_Uso">Edad de Uso:</label><br/>
+                    <input type="text" name="Edad_de_Uso" th:field="*{Edad_de_Uso}"/>
+                    <span th:if="${#fields.hasErrors('Edad_de_Uso')}" th:errores="*{Edad_de_Uso}">Error</span>
+                    <br/>
+                    <input type="submit" name="salvar" value="Guardar"/>
+
+            </form>
+        </section>
+        
+        <br/>
+        <br/>
+        <footer>
+            <section>
+                <a href="#titulo">Ir arriba</a>
+                <a href="mailto:ambriangel@gmail.com">Contactame aqui</a>
+            </section>
+            <p>Copyright 2023</p>
+
+        </footer>
+    </body>
+</html>
